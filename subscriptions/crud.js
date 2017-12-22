@@ -39,11 +39,7 @@ router.use((req, res, next) => {
   next();
 });
 
-/**
- * GET /books/add
- *
- * Display a page of books (up to ten at a time).
- */
+
 router.get('/', (req, res, next) => {
   getModel().list(10, req.query.pageToken, (err, entities, cursor) => {
     if (err) {
@@ -51,7 +47,7 @@ router.get('/', (req, res, next) => {
       return;
     }
     res.render('books/list.pug', {
-      books: entities,
+      subscriptions: entities,
       nextPageToken: cursor
     });
   });
@@ -71,7 +67,7 @@ router.get('/mine', oauth2.required, (req, res, next) => {
         return;
       }
       res.render('books/list.pug', {
-        books: entities,
+        subscriptions: entities,
         nextPageToken: cursor
       });
     }
@@ -154,66 +150,18 @@ router.post('/delete', (req, res) => {
 
 });
 
-/**
- * GET /books/:id/edit
- *
- * Display a book for editing.
- */
-router.get('/:book/edit', (req, res, next) => {
-  getModel().read(req.params.book, (err, entity) => {
-    if (err) {
-      next(err);
-      return;
-    }
-    res.render('books/form.pug', {
-      book: entity,
-      action: 'Edit'
-    });
-  });
-});
 
-/**
- * POST /books/:id/edit
- *
- * Update a book.
- */
-router.post(
-  '/:book/edit',
-  images.multer.single('image'),
-  images.sendUploadToGCS,
-  (req, res, next) => {
-    const data = req.body;
 
-    // Was an image uploaded? If so, we'll use its public URL
-    // in cloud storage.
-    if (req.file && req.file.cloudStoragePublicUrl) {
-      req.body.imageUrl = req.file.cloudStoragePublicUrl;
-    }
 
-    getModel().update(req.params.book, data, (err, savedData) => {
-      if (err) {
-        next(err);
-        return;
-      }
-      res.redirect(`${req.baseUrl}/${savedData.id}`);
-    });
-  }
-);
-
-/**
- * GET /books/:id
- *
- * Display a book.
- */
-router.get('/:book', (req, res, next) => {
+router.get('/:subscriptionid', (req, res, next) => {
   
-  getModel().read(req.params.book, (err, entity) => {
+  getModel().read(req.params.subscriptionid, (err, entity) => {
     if (err) {
       next(err);
-      return;
+       return;
     }
     res.render('books/view.pug', {
-      book: entity
+      subscription: entity
     });
   });
 });

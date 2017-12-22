@@ -29,18 +29,18 @@ block content
         th by 
         th IP 
         
-      each book in books
+      each subscription in subscriptions
         tr
           td
-            input(type="checkbox" id=`cID${book.id}` name="subscriptionId" value=`${book.id}`)
+            input(type="checkbox" id=`cID${subscription.id}` name="subscriptionId" value=`${subscription.id}`)
           td 
-            a(href=`/subscriptions/${book.id}`) #{book.id}
+            a(href=`/subscriptions/${subscription.id}`) #{subscription.id}
           td
-            span #{book.createdBy}
+            span #{subscription.createdBy}
           td
-            span #{book.ipaddress}
+            span #{subscription.ipaddress}
 
-    if !books.length
+    if !subscriptions.length
       p No subscriber found.
 
     if nextPageToken
