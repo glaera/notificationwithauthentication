@@ -131,7 +131,6 @@ router.post('/broadcast', (req, res) => {
 
 
 router.post('/delete', (req, res) => {
-  console.log('GENANRO DELETE',req.body.subscriptionId)
   let subscriptionIds = req.body.subscriptionId;
   if (subscriptionIds) {
       if (!Array.isArray(subscriptionIds) ) {

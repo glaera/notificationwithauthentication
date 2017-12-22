@@ -61,12 +61,6 @@ app.use('/public', express.static(path.join(__dirname + '/public')));
 
 // Subscriptions
 app.use('/subscriptions', require('./subscriptions/crud'));
-app.use('/api/subscriptions', require('./subscriptions/api'));
-
-app.get('/manifest.json', (req, res) => {
-
-  res.sendFile(path.join(__dirname + '/manifest.json'));
-});
 
 
 // Redirect root to /subscriptions

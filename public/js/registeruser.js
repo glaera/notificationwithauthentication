@@ -1,21 +1,6 @@
 
 function initialiseUI() {
 
-  fetch('/api/subscriptions', {
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: "GET",
-})
-  .then((response) => {
-    if (response.status !== 200) {
-      return response.text()
-      .then((responseText) => {
-        throw new Error(responseText);
-      });
-    }
-  });
 
 }
 
