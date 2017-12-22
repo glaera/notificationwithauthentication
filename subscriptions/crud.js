@@ -46,7 +46,7 @@ router.get('/', (req, res, next) => {
       next(err);
       return;
     }
-    res.render('books/list.pug', {
+    res.render('subscriptions/list.pug', {
       subscriptions: entities,
       nextPageToken: cursor
     });
@@ -66,7 +66,7 @@ router.get('/mine', oauth2.required, (req, res, next) => {
         next(err);
         return;
       }
-      res.render('books/list.pug', {
+      res.render('subscriptions/list.pug', {
         subscriptions: entities,
         nextPageToken: cursor
       });
@@ -160,19 +160,14 @@ router.get('/:subscriptionid', (req, res, next) => {
       next(err);
        return;
     }
-    res.render('books/view.pug', {
+    res.render('subscriptions/view.pug', {
       subscription: entity
     });
   });
 });
 
-/**
- * GET /books/:id/delete
- *
- * Delete a book.
- */
-router.get('/:book/delete', (req, res, next) => {
-  getModel().delete(req.params.book, (err) => {
+router.get('/:subid/delete', (req, res, next) => {
+  getModel().delete(req.params.subid, (err) => {
     if (err) {
       next(err);
       return;
@@ -249,10 +244,6 @@ router.post('/send-push-msg', (req, res, next) => {
 
 
 
-
-/**
- * Errors on "/books/*" routes.
- */
 router.use((err, req, res, next) => {
   // Format error and forward to generic error handler for logging and
   // responding to the request

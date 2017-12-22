@@ -81,10 +81,6 @@ function toDatastore (obj, nonIndexed) {
   return results;
 }
 
-// Lists all books in the Datastore sorted alphabetically by title.
-// The ``limit`` argument determines the maximum amount of results to
-// return per page. The ``token`` argument allows requesting additional
-// pages. The callback is invoked with ``(err, books, nextPageToken)``.
 function list (limit, token, cb) {
   const q = ds.createQuery([kind])
     .limit(limit)
@@ -100,9 +96,6 @@ function list (limit, token, cb) {
   });
 }
 
-// Similar to ``list``, but only lists the books created by the specified
-// user.
-// [START listby]
 function listBy (userId, limit, token, cb) {
   const q = ds.createQuery([kind])
     .filter('createdById', '=', userId)
@@ -139,12 +132,10 @@ function deleteBy(userId) {
   });
 
 }
-// [END listby]
 
-// Creates a new book or updates an existing book with new data. The provided
-// data is automatically translated into Datastore format. The book will be
-// queued for background processing.
+
 function update (id, data, cb) {
+
   let key;
   if (id) {
     key = ds.key([kind, parseInt(id, 10)]);

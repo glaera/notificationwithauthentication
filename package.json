@@ -1,8 +1,8 @@
 {
-  "name": "nodejs-getting-started",
+  "name": "notification-getting-started",
   "version": "1.0.0",
-  "description": "End to end sample for running Node.js applications on Google Cloud Platform",
-  "repository": "https://github.com/GoogleCloudPlatform/nodejs-getting-started",
+  "description": "notifications",
+  "repository": "https://github.com/glaera/notificationwithauthentication",
   "private": true,
   "scripts": {
     "start": "node app.js",
@@ -11,23 +11,11 @@
     "cover": "nyc --cache npm test; nyc report --reporter=html",
     "init-cloudsql": "node books/model-cloudsql.js"
   },
-  "author": "Google Inc.",
+  "author": "Gennaro.",
   "contributors": [
     {
-      "name": "Jon Wayne Parrott",
-      "email": "jonwayne@google.com"
-    },
-    {
-      "name": "Jonathan Simon",
-      "email": "jbsimon@google.com"
-    },
-    {
-      "name": "Jason Dobry",
-      "email": "jdobry@google.com"
-    },
-    {
-      "name": "Ace Nassri",
-      "email": "anassri@google.com"
+      "name": "gennaro",
+      "email": "gennaro.laera@gmail.com"
     }
   ],
   "cloud-repo-tools": {
