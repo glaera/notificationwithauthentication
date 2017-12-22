@@ -6,7 +6,7 @@ const oauth2 = require('../lib/oauth2');
 const bodyParser = require('body-parser');
 const config = require('../config');
 var webPush = require('web-push');
-const {detectLabelsGCS} = require('./detect');
+const {detectLabelsGCS,detectTextGCS} = require('./detect');
 
 const CLOUD_BUCKET = config.get('CLOUD_BUCKET');
 
@@ -92,12 +92,15 @@ router.get('/:dataid', (req, res, next) => {
       next(err);
       return;
     }
-    detectLabelsGCS(CLOUD_BUCKET,entity.gCSResource,(labels)=>{
-      res.render('visions/view.pug', {
-        data: entity,
-        labels: labels
+    detectTextGCS(CLOUD_BUCKET,entity.gCSResource,(text)=>{
+      detectLabelsGCS(CLOUD_BUCKET,entity.gCSResource,(labels)=>{
+        res.render('visions/view.pug', {
+          data: entity,
+          labels: labels,
+          text: text
+        });
       });
-    });
+    });  
    
   });
 });
