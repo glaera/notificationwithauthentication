@@ -136,7 +136,6 @@ function deleteBy(userId) {
         ds.delete(key);
       }
     );
-    console.log('gennaro DELETED')
   });
 
 }

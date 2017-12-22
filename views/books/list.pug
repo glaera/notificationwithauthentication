@@ -20,7 +20,8 @@ block content
     span  Subscribe to receive Impact notifications
 
   form(method="POST", id="actionform")
-    textarea(type="text" rows="3" id="push-data" name="message")
+    textarea(type="text" rows="3" id="push-data" name="message"
+          placeholder="here a message to broadcast...")
     table
       tr 
         th  
@@ -34,8 +35,6 @@ block content
             input(type="checkbox" id=`cID${book.id}` name="subscriptionId" value=`${book.id}`)
           td 
             a(href=`/subscriptions/${book.id}`) #{book.id}
-          td
-            span #{book.id}
           td
             span #{book.createdBy}
           td

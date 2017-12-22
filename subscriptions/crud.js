@@ -45,7 +45,6 @@ router.use((req, res, next) => {
  * Display a page of books (up to ten at a time).
  */
 router.get('/', (req, res, next) => {
-console.log('GENNARO user',req.user);  
   getModel().list(10, req.query.pageToken, (err, entities, cursor) => {
     if (err) {
       next(err);
@@ -90,7 +89,6 @@ router.post('/broadcast', (req, res) => {
       let message = req.body.message;
       
       subscriptionIds.forEach(id=>{
-        console.log('gennaro broadcasting to ',id)
         getModel().read(id, (err, entity) => {
           if (err) {
             next(err);
@@ -118,7 +116,7 @@ router.post('/broadcast', (req, res) => {
             );
           }
           catch(err) {
-              console.log('gennaro error',err)
+              console.log(' error',err)
           }
         
           
@@ -237,7 +235,7 @@ router.get('/:book/delete', (req, res, next) => {
 });
 
 router.post('/unsubscribe', oauth2.required, (req, res, next) => {
-  console.log('GENNARO UNSUBSCRIBE')
+  console.log(' UNSUBSCRIBE')
   getModel().deleteBy(
     req.user.id);
     res.redirect(req.baseUrl);
@@ -248,10 +246,9 @@ router.post('/unsubscribe', oauth2.required, (req, res, next) => {
 router.post('/send-push-msg', (req, res, next) => {
   
   let subscription = req.query.subscription;
-  console.log('GENNARO /send-push-msg',req.user); 
+  console.log(' /send-push-msg',req.user); 
 
 
-  console.log('gennaro received ',req.query,req.connection.remoteAddress)
   
   try {
     let pushSubscription = {
@@ -272,10 +269,9 @@ router.post('/send-push-msg', (req, res, next) => {
 
     getModel().create(pushSubscription, (err, entity) => {
       if (err) {
-        console.log('gennaro storing subscription',err);
         return;
       }
-      console.log('gennaro entity stored',entity);
+      
     });
 
     // TODO 4.3a - include VAPID keys
@@ -297,7 +293,7 @@ router.post('/send-push-msg', (req, res, next) => {
     );
   }
   catch(err) {
-      console.log('gennaro error',err)
+      console.log(' error',err)
   }
   
 });

@@ -13,7 +13,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-console.log('gennaro');
 var app = (function() {
   'use strict';
 
@@ -73,7 +72,7 @@ var app = (function() {
         subscribeUser();        
       }
     });
-    console.log('gennaro initializeUI')
+    console.log(' initializeUI')
     swRegistration.pushManager.getSubscription()
     .then(function(subscription) {
       isSubscribed = (subscription !== null);
@@ -158,7 +157,7 @@ var app = (function() {
   }
 
   function updateBtn() {
-    console.log('gennaro updateBtn')
+    console.log(' updateBtn')
     if (Notification.permission === 'denied') {
       pushButton.textContent = 'Push Messaging Blocked';
       pushButton.disabled = true;
@@ -167,10 +166,11 @@ var app = (function() {
     }
 
     if (isSubscribed) {
-      pushButton.textContent = 'Unsubscribe (deleting requests with my IP address)';
+      pushButton.textContent = 'Unsubscribe';
     } else {
-      pushButton.textContent = 'Subscribe to receive Impact notifications';
+      pushButton.textContent = 'Subscribe to receive notifications';
     }
+
 
     pushButton.disabled = false;
   }
@@ -199,7 +199,6 @@ var app = (function() {
       console.log('Service Worker is registered', swReg);
 
       swRegistration = swReg;
-      console.log('gennaro calling  initializeUI')
       initializeUI();
 
     })

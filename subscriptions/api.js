@@ -50,10 +50,6 @@ router.get('/', (req, res, next) => {
 router.post('/send-push-msg', (req, res, next) => {
   
   let subscription = req.query.subscription;
-  console.log('GENNARO /send-push-msg',req.user); 
-
-
-  console.log('gennaro received ',req.query,req.connection.remoteAddress)
   
   try {
     let pushSubscription = {
@@ -74,10 +70,9 @@ router.post('/send-push-msg', (req, res, next) => {
 
     getModel().create(pushSubscription, (err, entity) => {
       if (err) {
-        console.log('gennaro storing subscription',err);
         return;
       }
-      console.log('gennaro entity stored',entity);
+      
     });
 
     // TODO 4.3a - include VAPID keys
@@ -99,7 +94,7 @@ router.post('/send-push-msg', (req, res, next) => {
     );
   }
   catch(err) {
-      console.log('gennaro error',err)
+      console.log(' error',err)
   }
   
 });

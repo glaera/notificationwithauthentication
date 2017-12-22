@@ -9,9 +9,6 @@ function initialiseUI() {
     method: "GET",
 })
   .then((response) => {
-console.log('gennaro response ',response.status) 
-
-console.log('gennaro response data',response) 
     if (response.status !== 200) {
       return response.text()
       .then((responseText) => {
@@ -27,9 +24,7 @@ console.log('gennaro response data',response)
 function registerSubscription(subscription){
 
     let p256dh = btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('p256dh'))))
-    console.log('gennaro subscription ', p256dh);
     let auth = btoa(String.fromCharCode.apply(null, new Uint8Array(subscription.getKey('auth'))))
-    console.log('gennaro auth ', auth);
     let  endpoint = subscription.endpoint;
     fetch('/subscriptions/send-push-msg?endpoint='+endpoint+'&p256dh='+encodeURIComponent(p256dh)+'&auth='+encodeURIComponent(auth), {
         credentials: 'include',
@@ -45,7 +40,6 @@ function registerSubscription(subscription){
         })
     })
       .then((response) => {
-    console.log('gennaro response ',response.status)      
         if (response.status !== 200) {
           return response.text()
           .then((responseText) => {
