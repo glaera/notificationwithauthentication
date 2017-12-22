@@ -58,4 +58,33 @@ function detectTextGCS(bucketName, fileName,cb) {
   // [END vision_text_detection_gcs]
 }
 
-  module.exports = {detectLabelsGCS,detectTextGCS};
+function detectLandmarksGCS(bucketName, fileName,cb) {
+  // [START vision_landmark_detection_gcs]
+  // Imports the Google Cloud client libraries
+  const vision = require('@google-cloud/vision');
+
+  // Creates a client
+  const client = new vision.ImageAnnotatorClient();
+
+  /**
+   * TODO(developer): Uncomment the following lines before running the sample.
+   */
+  // const bucketName = 'Bucket where the file resides, e.g. my-bucket';
+  // const fileName = 'Path to file within bucket, e.g. path/to/image.png';
+
+  // Performs landmark detection on the gcs file
+  client
+    .landmarkDetection(`gs://${bucketName}/${fileName}`)
+    .then(results => {
+      const landmarks = results[0].landmarkAnnotations;
+      console.log('Landmarks:');
+      landmarks.forEach(landmark => console.log(landmark));
+      cb(landmarks);
+    })
+    .catch(err => {
+      console.error('ERROR:', err);
+    });
+  // [END vision_landmark_detection_gcs]
+}
+
+  module.exports = {detectLandmarksGCS,detectLabelsGCS,detectTextGCS};

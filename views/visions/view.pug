@@ -33,6 +33,9 @@ block content
 
       p= data.description
       small Added by #{data.createdBy}
-      
-      pre= JSON.stringify(labels,undefined,2) 
-      pre= JSON.stringify(text,undefined,2) 
+      p Labels 
+        pre= JSON.stringify(labels,undefined,2) 
+      p Text detected
+        pre= JSON.stringify(text,undefined,2) 
+      p Landmarks
+        pre= JSON.stringify(landmarks,undefined,2) 
