@@ -19,6 +19,7 @@ function detectLabelsGCS(bucketName, fileName, cb) {
       .labelDetection(`gs://${bucketName}/${fileName}`)
       .then(results => {
         const labels = results[0].labelAnnotations;
+        console.log('GENNARO ',results[0])
         cb(labels);
       })
       .catch(err => {
@@ -27,4 +28,4 @@ function detectLabelsGCS(bucketName, fileName, cb) {
     // [END vision_label_detection_gcs]
   }
 
-  module.exports = detectLabelsGCS;
+  module.exports = {detectLabelsGCS};
