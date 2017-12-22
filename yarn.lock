@@ -81,6 +81,29 @@
     string-format-obj "^1.1.0"
     through2 "^2.0.3"
 
+"@google-cloud/common@^0.15.1":
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/@google-cloud/common/-/common-0.15.1.tgz#a6f79535de626cc0e05b0ccda9db0c36099e47a3"
+  dependencies:
+    array-uniq "^1.0.3"
+    arrify "^1.0.1"
+    concat-stream "^1.6.0"
+    create-error-class "^3.0.2"
+    duplexify "^3.5.0"
+    ent "^2.2.0"
+    extend "^3.0.1"
+    google-auto-auth "^0.8.0"
+    is "^3.2.0"
+    log-driver "^1.2.5"
+    methmeth "^1.1.0"
+    modelo "^4.2.0"
+    request "^2.79.0"
+    retry-request "^3.0.0"
+    split-array-stream "^1.0.0"
+    stream-events "^1.0.1"
+    string-format-obj "^1.1.0"
+    through2 "^2.0.3"
+
 "@google-cloud/datastore@1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/datastore/-/datastore-1.1.0.tgz#386e9c9bdc4397945c8a47983821470f47041889"
@@ -140,6 +163,18 @@
     stream-events "^1.0.1"
     string-format-obj "^1.0.0"
     through2 "^2.0.0"
+
+"@google-cloud/vision@^0.14.0":
+  version "0.14.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/vision/-/vision-0.14.0.tgz#dfd77bb3ed4b5055b79618669bee3d1cd4fa82d0"
+  dependencies:
+    "@google-cloud/common" "^0.15.1"
+    async "^2.0.1"
+    extend "^3.0.0"
+    google-gax "^0.14.2"
+    google-proto-files "^0.14.1"
+    is "^3.0.1"
+    lodash.merge "^4.6.0"
 
 "@protobufjs/aspromise@^1.1.1", "@protobufjs/aspromise@^1.1.2":
   version "1.1.2"
@@ -1642,7 +1677,7 @@ express@^4.16.2:
     utils-merge "1.0.1"
     vary "~1.1.2"
 
-extend@^3.0.0, extend@~3.0.0, extend@~3.0.1:
+extend@^3.0.0, extend@^3.0.1, extend@~3.0.0, extend@~3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.1.tgz#a755ea7bc1adfcc5a31ce7e762dbaadc5e636444"
 
@@ -1954,6 +1989,16 @@ google-auth-library@^0.10.0:
     lodash.noop "^3.0.1"
     request "^2.74.0"
 
+google-auth-library@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-0.12.0.tgz#a3fc6c296d00bb54e4d877ef581a05947330d07f"
+  dependencies:
+    gtoken "^1.2.3"
+    jws "^3.1.4"
+    lodash.isstring "^4.0.1"
+    lodash.merge "^4.6.0"
+    request "^2.81.0"
+
 google-auto-auth@^0.5.2:
   version "0.5.4"
   resolved "https://registry.yarnpkg.com/google-auto-auth/-/google-auto-auth-0.5.4.tgz#1d86c7928d633e75a9c1ab034a527efcce4a40b1"
@@ -1963,13 +2008,22 @@ google-auto-auth@^0.5.2:
     object-assign "^3.0.0"
     request "^2.79.0"
 
-google-auto-auth@^0.7.1:
+google-auto-auth@^0.7.1, google-auto-auth@^0.7.2:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/google-auto-auth/-/google-auto-auth-0.7.2.tgz#bf9352d5c4a0897bf31fd9c491028b765fbea71e"
   dependencies:
     async "^2.3.0"
     gcp-metadata "^0.3.0"
     google-auth-library "^0.10.0"
+    request "^2.79.0"
+
+google-auto-auth@^0.8.0:
+  version "0.8.2"
+  resolved "https://registry.yarnpkg.com/google-auto-auth/-/google-auto-auth-0.8.2.tgz#928ee8954514a2ea179de8dd4e97f04d40d13d0a"
+  dependencies:
+    async "^2.3.0"
+    gcp-metadata "^0.3.0"
+    google-auth-library "^0.12.0"
     request "^2.79.0"
 
 google-gax@^0.13.0:
@@ -1979,6 +2033,22 @@ google-gax@^0.13.0:
     extend "^3.0.0"
     globby "^6.1.0"
     google-auto-auth "^0.5.2"
+    google-proto-files "^0.13.1"
+    grpc "^1.2"
+    is-stream-ended "^0.1.0"
+    lodash "^4.17.2"
+    process-nextick-args "^1.0.7"
+    protobufjs "^6.8.0"
+    readable-stream "^2.2.2"
+    through2 "^2.0.3"
+
+google-gax@^0.14.2:
+  version "0.14.2"
+  resolved "https://registry.yarnpkg.com/google-gax/-/google-gax-0.14.2.tgz#2b1f2b86e8be98a620041cee710e4f4ce61b6e2b"
+  dependencies:
+    extend "^3.0.0"
+    globby "^6.1.0"
+    google-auto-auth "^0.7.2"
     google-proto-files "^0.13.1"
     grpc "^1.2"
     is-stream-ended "^0.1.0"
@@ -2001,6 +2071,13 @@ google-proto-files@^0.12.0:
 google-proto-files@^0.13.1:
   version "0.13.1"
   resolved "https://registry.yarnpkg.com/google-proto-files/-/google-proto-files-0.13.1.tgz#fcf123637d1811612d6a4cb030fd14516b5aec4b"
+
+google-proto-files@^0.14.1:
+  version "0.14.1"
+  resolved "https://registry.yarnpkg.com/google-proto-files/-/google-proto-files-0.14.1.tgz#6e5f15f8bd6615d73ca3fdd08cdec33363f9af89"
+  dependencies:
+    globby "^6.1.0"
+    protobufjs "^6.8.0"
 
 got@7.1.0:
   version "7.1.0"
@@ -2055,7 +2132,7 @@ grpc@^1.2, grpc@^1.7.1:
     node-pre-gyp "^0.6.39"
     protobufjs "^5.0.2"
 
-gtoken@^1.2.1:
+gtoken@^1.2.1, gtoken@^1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/gtoken/-/gtoken-1.2.3.tgz#5509571b8afd4322e124cf66cf68115284c476d8"
   dependencies:
@@ -2766,6 +2843,10 @@ lodash.get@^4.4.2:
 lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+
+lodash.isstring@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/lodash.isstring/-/lodash.isstring-4.0.1.tgz#d527dfb5456eca7cc9bb95d5daeaf88ba54a5451"
 
 lodash.merge@^4.6.0:
   version "4.6.0"

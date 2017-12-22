@@ -62,6 +62,8 @@ app.use('/public', express.static(path.join(__dirname + '/public')));
 // Subscriptions
 app.use('/subscriptions', require('./subscriptions/crud'));
 
+app.use('/visions', require('./visions/crud'));
+
 
 // Redirect root to /subscriptions
 app.get('/', (req, res) => {

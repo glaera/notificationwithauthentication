@@ -1,0 +1,26 @@
+extends ../base.pug
+
+block content
+  h3 Images
+
+  a(href="/visions/add", class='btn btn-success btn-sm')
+    i.glyphicon.glyphicon-plus
+    span  Add image
+
+  each data in images
+    .media
+      a(href=`/visions/${data.id}`)
+        .media-left
+            div(style="width:200px;")
+               img(src=data.imageUrl ,style='height: 100%; width: 100%; object-fit: contain')
+        .media-body
+          p= data.createdBy
+
+  if !images.length
+    p No images found.
+
+  if nextPageToken
+    nav
+      ul.pager
+        li
+          a(href=`?pageToken=${encodeURIComponent(nextPageToken)}`) More
