@@ -275,7 +275,7 @@ router.post('/send-push-msg', (req, res, next) => {
 
     // TODO 4.3a - include VAPID keys
     
-    var payload = 'Here is a payload!';
+    var payload = `Hi ${pushSubscription.createdBy}!, thanks for subscribing`;
     
     var options = {
       gcmAPIKey: 'AAAA4hP27WY:APA91bHDBs-UYMCEmjriFRauvsbI4cHTWzow-pLWAEBjQTOxfKKwO8x7x7NLs_CdiuRr0H1SKX_07pdo8TRhMlTjqVG7eNb7ih9dwzvXPYO4ZzDzC_M9PO_Tka6BnKk68P95PUxgcGPV',
