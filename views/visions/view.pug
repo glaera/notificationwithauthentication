@@ -35,10 +35,22 @@ block content
       small Added by #{data.createdBy}
       p Labels 
         pre= JSON.stringify(labels,undefined,2) 
+        ul
+          each label in labels
+            li
+              a(target="_blank", href=`https://www.google.com/search?q=${label.description}`) 
+                span= label.description
+
       p Text detected
         pre= JSON.stringify(text,undefined,2) 
       p Landmarks
         pre= JSON.stringify(landmarks,undefined,2) 
       p Web
-        pre= JSON.stringify(webDetection,undefined,2) 
+        pre= JSON.stringify(webDetection,undefined,2)
+        ul
+          each webEntity in webDetection.webEntities
+            li
+              a(target="_blank", href=`https://www.google.com/search?q=${webEntity.description}`)
+                span=webEntity.description
+          
 

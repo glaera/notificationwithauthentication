@@ -20,7 +20,7 @@ const MemcachedStore = require('connect-memcached')(session);
 const passport = require('passport');
 const config = require('./config');
 var bodyParser = require('body-parser');
-
+const oauth2 = require('./lib/oauth2');
 
 const app = express();
 
@@ -62,7 +62,7 @@ app.use('/public', express.static(path.join(__dirname + '/public')));
 // Subscriptions
 app.use('/subscriptions', require('./subscriptions/crud'));
 
-app.use('/visions', require('./visions/crud'));
+app.use('/visions', oauth2.required,require('./visions/crud'));
 
 
 // Redirect root to /subscriptions
