@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const config = require('../config');
 var webPush = require('web-push');
 const {detectWebEntitiesGCS,detectLandmarksGCS,detectLabelsGCS,detectTextGCS} = require('./detect');
+const translate = require('./translate');
 
 const CLOUD_BUCKET = config.get('CLOUD_BUCKET');
 
@@ -95,13 +96,24 @@ router.get('/:dataid', (req, res, next) => {
     detectWebEntitiesGCS(CLOUD_BUCKET,entity.gCSResource,(webDetection)=>{
       detectLandmarksGCS(CLOUD_BUCKET,entity.gCSResource,(landmarks)=>{
         detectTextGCS(CLOUD_BUCKET,entity.gCSResource,(text)=>{
+          let contentText = '';
+          let language = 'en';
+          
+          if (text.length > 0) {
+            contentText = text[0].description;
+            language = text[0].locale;
+          }
+          let targetLanguage = language==='en'?'it':'en';
           detectLabelsGCS(CLOUD_BUCKET,entity.gCSResource,(labels)=>{
-            res.render('visions/view.pug', {
-              data: entity,
-              labels: labels,
-              text: text,
-              landmarks: landmarks,
-              webDetection: webDetection
+            translate(contentText,targetLanguage,(translations)=>{
+              res.render('visions/view.pug', {
+                data: entity,
+                labels: labels,
+                text: text,
+                landmarks: landmarks,
+                webDetection: webDetection,
+                translations: translations
+              });  
             });
           });
         });  

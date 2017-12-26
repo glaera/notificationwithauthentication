@@ -164,6 +164,17 @@
     string-format-obj "^1.0.0"
     through2 "^2.0.0"
 
+"@google-cloud/translate@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@google-cloud/translate/-/translate-1.1.0.tgz#fc9997a2724575effa7beb6e2d02042d456b627a"
+  dependencies:
+    "@google-cloud/common" "^0.13.0"
+    arrify "^1.0.0"
+    extend "^3.0.1"
+    is "^3.0.1"
+    is-html "^1.0.0"
+    propprop "^0.3.0"
+
 "@google-cloud/vision@^0.14.0":
   version "0.14.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/vision/-/vision-0.14.0.tgz#dfd77bb3ed4b5055b79618669bee3d1cd4fa82d0"
@@ -2265,6 +2276,10 @@ hosted-git-info@^2.1.4:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.5.0.tgz#6d60e34b3abbc8313062c3b798ef8d901a07af3c"
 
+html-tags@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-1.2.0.tgz#c78de65b5663aa597989dd2b7ab49200d7e4db98"
+
 http-errors@1.6.2, http-errors@~1.6.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/http-errors/-/http-errors-1.6.2.tgz#0a002cc85707192a7e7946ceedc11155f60ec736"
@@ -2472,6 +2487,12 @@ is-glob@^2.0.0, is-glob@^2.0.1:
   resolved "https://registry.yarnpkg.com/is-glob/-/is-glob-2.0.1.tgz#d096f926a3ded5600f3fdfd91198cb0888c2d863"
   dependencies:
     is-extglob "^1.0.0"
+
+is-html@^1.0.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/is-html/-/is-html-1.1.0.tgz#e04f1c18d39485111396f9a0273eab51af218464"
+  dependencies:
+    html-tags "^1.0.0"
 
 is-installed-globally@^0.1.0:
   version "0.1.0"
