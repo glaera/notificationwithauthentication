@@ -24,6 +24,7 @@ function detectLabelsGCS(bucketName, fileName, cb) {
       })
       .catch(err => {
         console.error('ERROR:', err);
+        cb({err:err});
       });
     // [END vision_label_detection_gcs]
   }
@@ -54,6 +55,7 @@ function detectTextGCS(bucketName, fileName,cb) {
     })
     .catch(err => {
       console.error('ERROR:', err);
+      cb({err:err});
     });
   // [END vision_text_detection_gcs]
 }
@@ -83,6 +85,7 @@ function detectLandmarksGCS(bucketName, fileName,cb) {
     })
     .catch(err => {
       console.error('ERROR:', err);
+      cb({err:err});
     });
   // [END vision_landmark_detection_gcs]
 }
@@ -112,6 +115,7 @@ function detectWebEntitiesGCS(bucketName, fileName,cb) {
     })
     .catch(err => {
       console.error('ERROR:', err);
+      cb({err:err});
     });
   // [END vision_landmark_detection_gcs]
 }
