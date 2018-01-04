@@ -19,7 +19,6 @@ function detectLabelsGCS(bucketName, fileName, cb) {
       .labelDetection(`gs://${bucketName}/${fileName}`)
       .then(results => {
         const labels = results[0].labelAnnotations;
-        console.log('GENNARO ',results[0])
         cb(labels);
       })
       .catch(err => {
@@ -49,8 +48,6 @@ function detectTextGCS(bucketName, fileName,cb) {
     .textDetection(`gs://${bucketName}/${fileName}`)
     .then(results => {
       const detections = results[0].textAnnotations;
-      console.log('Text:');
-      detections.forEach(text => console.log(text));
       cb(detections);
     })
     .catch(err => {
@@ -79,8 +76,6 @@ function detectLandmarksGCS(bucketName, fileName,cb) {
     .landmarkDetection(`gs://${bucketName}/${fileName}`)
     .then(results => {
       const landmarks = results[0].landmarkAnnotations;
-      console.log('Landmarks:');
-      landmarks.forEach(landmark => console.log(landmark));
       cb(landmarks);
     })
     .catch(err => {
@@ -110,7 +105,6 @@ function detectWebEntitiesGCS(bucketName, fileName,cb) {
     .webDetection(`gs://${bucketName}/${fileName}`)
     .then(results => {
       const webDetection = results[0].webDetection;
-      console.log('GENNARO WEB',results)
       cb(webDetection);
     })
     .catch(err => {

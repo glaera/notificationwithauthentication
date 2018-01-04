@@ -23,10 +23,6 @@ function translateText(text, target, cb) {
           ? translations
           : [translations];
   
-        console.log('Translations:');
-        translations.forEach((translation, i) => {
-          console.log(`${text[i]} => (${target}) ${translation}`);
-        });
         cb(translations);
       })
       .catch(err => {

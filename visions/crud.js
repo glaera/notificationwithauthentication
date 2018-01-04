@@ -93,6 +93,7 @@ router.get('/:dataid', (req, res, next) => {
       next(err);
       return;
     }
+    console.log('gennaro language',req.query.language);
     detectWebEntitiesGCS(CLOUD_BUCKET,entity.gCSResource,(webDetection)=>{
       detectLandmarksGCS(CLOUD_BUCKET,entity.gCSResource,(landmarks)=>{
         detectTextGCS(CLOUD_BUCKET,entity.gCSResource,(text)=>{
@@ -103,7 +104,7 @@ router.get('/:dataid', (req, res, next) => {
             contentText = text[0].description;
             language = text[0].locale;
           }
-          let targetLanguage = language==='en'?'it':'en';
+          let targetLanguage = req.query.language ?req.query.language:'en';
           detectLabelsGCS(CLOUD_BUCKET,entity.gCSResource,(labels)=>{
             translate(contentText,targetLanguage,(translations)=>{
               res.render('visions/view.pug', {
